@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<title>Hello Angular</title>
+<header>
+<style type="text/css">
+.rosso {color: red;}
+.verde {color: green;}
+.blu {color: blue;}
+.giallo {color: yellow;}
+.magenta {color: magenta;}
+.normale {font-style: normal;}
+.grassetto {font-weight: bold;}
+.corsivo {font-style: italic;}
+.titolo_italiano {color: magenta; font-style: italic;}
+.titolo_inglese {color: red; font-style: bold;}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script type="text/javascript"> 
+angular.module("myApp", []) 
+    .controller("userController",   
+        function($scope) { 
+            $scope.stile = { colore: "rosso", tipo: "titolo_italiano"};  
+				$scope.gestisci = function() { 
+                return "CIAO " +
+                       $scope.stile.colore   + " " + $scope.stile.tipo   
+            }; 
+        }); 
+</script> 
+
+
+</header>
+<body ng-app = "myApp">
+    <h1>Hello Angular</h1>
+	<div ng-controller="userController"> 
+	<p>Colore (rosso, verde, blu, giallo,magenta,normale,grassetto,corsivo): <input type="text" ng-model="stile.colore"></p>
+	<p>Tipo (titolo_italiano,titolo_inglese): <input type="text" ng-model="stile.tipo"></p>
+	<!--<p ng-class="[stile.colore, stile_tipo]">{{gestisci()}}</p>-->
+	<p ng-class="[stile.colore, stile.tipo]">{{gestisci()}}</p>
+	</div>
+</body>
+</html>
